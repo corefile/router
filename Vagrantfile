@@ -3,8 +3,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  # ip configuration. Also, make sure this is in sync with puppet/hieradata/*
-  node_ex_ip = "192.168.111.254"
+ node_ex_ip = "192.168.111.254"
 
 
   config.vm.define "router-node", primary: true, autostart: true do |node|
