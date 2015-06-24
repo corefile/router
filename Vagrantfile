@@ -6,11 +6,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
   config.vm.define "router-node", primary: true, autostart: true do |node|
-    node.vm.box = "centos6.6-i386"
-    node.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.6-i386_chef-provisionerless.box"
-    node.vm.provider "vmware_fusion" do |v, override|
-      override.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/vmware/opscode_centos-6.6-i386_chef-provisionerless.box"
-    end
+    node.vm.box = BOX_NAME
+    node.vm.define "router" 
     node.vm.hostname = "router"
     node.vm.network "private_network", ip: "#{node_ex_ip}", virtualbox__intnet: "mylocalnet", auto_config: true
     node.vm.provider :virtualbox do |vb|
